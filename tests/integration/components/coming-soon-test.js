@@ -33,7 +33,7 @@ test('Response message displayed after clicking invitation button', function(ass
   this.$('[data-test-email-input]').val('test@test.com').change();
   run(() => document.querySelector('[data-test-inv-button]').click());
 
-  assert.ok(this.$('[data-test-confirmation]').text(), 'Response message is rendered');
+  assert.ok(this.$('[data-test-response-msg]').text(), 'Response message is rendered');
 });
 
 test('Input is cleared after invitation is sent', function(assert) {

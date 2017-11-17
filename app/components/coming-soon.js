@@ -1,8 +1,22 @@
 import Component from '@ember/component';
 import Ember from 'ember';
+import { validator, buildValidations } from 'ember-cp-validations';
 
-export default Component.extend({
+const Validations = buildValidations({
+  email: [
+    validator('presence', true),
+    validator('format', { type: 'email' })
+  ],
+});
+
+export default Component.extend(Validations, {
   email: '',
-  validEmail: Ember.computed.match('email', /^.+@.+\..+$/),
-  disabled: Ember.computed.not('validEmail')
+  disabled: Ember.computed.not('validations.isValid'),
+
+  actions: {
+    saveInvitation() {
+      this.set('responseMessage', `Thank you! We've just saved your email address: ${this.get('email')}`);
+      this.set('email', '');
+    }
+  }
 });
