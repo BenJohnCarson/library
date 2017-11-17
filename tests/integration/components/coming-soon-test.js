@@ -19,6 +19,14 @@ test('Invitation button is inactive when input is not a valid email', function(a
   assert.equal(this.$('[data-test-inv-button]').prop('disabled'), true, 'Invitation button is disabled');  
 });
 
+test('Invitation button is enabled when email input is valid', function(assert) {
+  this.render(hbs`{{coming-soon}}`);
+  
+  this.$('[data-test-email-input]').val('test@test.com').change();
+  
+  assert.equal(this.$('[data-test-inv-button]').prop('disabled'), false, 'Invitation button is enabled');
+})
+
 test('Response message displayed after clicking invitation button', function(assert) {
   this.render(hbs`{{coming-soon}}`);
 
