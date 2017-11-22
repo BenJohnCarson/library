@@ -25,5 +25,7 @@ export default function() {
   */
 
   this.post('/invitations');
-  this.get('/invitations')
+  this.get('/invitations');;
+
+  this.get('/libraries')
 }

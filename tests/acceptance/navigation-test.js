@@ -48,3 +48,12 @@ test('Navigate to admin/invitations', function(assert) {
     assert.equal(currentURL(), '/admin/invitations');
   });
 });
+
+test('Navigate to libraries', function(assert) {
+  visit('/');
+  click('[data-test-nav-libraries]');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/libraries');
+  });
+});

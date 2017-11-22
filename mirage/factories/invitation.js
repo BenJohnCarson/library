@@ -4,4 +4,4 @@ export default Factory.extend({
   email() {
     return faker.internet.email();
   }
-})
+});
