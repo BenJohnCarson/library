@@ -1,24 +1,20 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import startMirage from '../../helpers/start-mirage';
 
 moduleForComponent('invitation-list', 'Integration | Component | invitation list', {
-  integration: true
+  integration: true,
+  setup() {
+    startMirage(this.container);
+  }
 });
 
-test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+test('it renders all invitations', function(assert) {
+  const invitationNumber = 3;
+  const model = server.createList('invitation', invitationNumber);
+  this.set('model', model);
 
-  this.render(hbs`{{invitation-list}}`);
+  this.render(hbs`{{invitation-list invitations=model}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#invitation-list}}
-      template block text
-    {{/invitation-list}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$('tbody tr').length, invitationNumber, `${invitationNumber} rows are visible`);
 });

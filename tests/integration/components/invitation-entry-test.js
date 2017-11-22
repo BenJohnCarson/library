@@ -2,23 +2,16 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('invitation-entry', 'Integration | Component | invitation entry', {
-  integration: true
+  integration: true,
+  beforeEach() {
+    let invitation = { id: 1, email: 'test@test.com'};
+    this.set('invitation', invitation);
+  }
 });
 
-test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+test('it renders id and email', function(assert) {
+  this.render(hbs`{{invitation-entry invitation=invitation}}`);
 
-  this.render(hbs`{{invitation-entry}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#invitation-entry}}
-      template block text
-    {{/invitation-entry}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$('[data-test-id]').text(), '1', 'Id is visible');
+  assert.equal(this.$('[data-test-email]').text(), 'test@test.com', 'Email is visible');
 });
