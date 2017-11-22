@@ -8,7 +8,11 @@ moduleForComponent('coming-soon', 'Integration | Component | coming soon', {
   beforeEach() {
     let newInvitation = { email: ''};
     let saveInvitation = function () {
-      return Ember.RSVP.Promise.resolve();
+      return Ember.RSVP.Promise.resolve({
+        get() {
+          return 'test@test.com';
+        }
+      });
     }
     this.setProperties({
       model: newInvitation,

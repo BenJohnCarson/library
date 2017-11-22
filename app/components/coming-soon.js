@@ -14,9 +14,8 @@ export default Component.extend(Validations, {
 
   actions: {
     saveInvitation() {
-      const email = this.get('invitation.email');
-      this.get('submitInvitation')().then(() => {
-        this.set('responseMessage', `Thank you! We've just saved your email address: ${email}`);
+      this.get('submitInvitation')().then((res) => {
+        this.set('responseMessage', `Thank you! We've just saved your email address: ${res.get('email')}`);
         this.set('invitation.email', '');
       })
     }
