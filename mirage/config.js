@@ -24,8 +24,9 @@ export default function() {
     http://www.ember-cli-mirage.com/docs/v0.3.x/shorthands/
   */
 
+  this.get('/invitations');
   this.post('/invitations');
-  this.get('/invitations');;
 
-  this.get('/libraries')
+  this.get('/libraries');
+  this.post('/libraries');
 }
