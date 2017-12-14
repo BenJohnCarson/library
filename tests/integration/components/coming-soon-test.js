@@ -22,12 +22,12 @@ moduleForComponent('coming-soon', 'Integration | Component | coming soon', {
 });
 
 test('Invitation button is inactive when input is empty', function(assert) {
-  this.render(hbs`{{coming-soon invitation=model submitInvitation=saveInvitation}}`);
+  this.render(hbs`{{coming-soon invitation=model saveInvitation=saveInvitation}}`);
   assert.equal(this.$('[data-test-inv-btn]').prop('disabled'), true, 'Invitation button is disabled');
 });
 
 test('Invitation button is inactive when input is not a valid email', function(assert) {
-  this.render(hbs`{{coming-soon invitation=model submitInvitation=saveInvitation}}`);
+  this.render(hbs`{{coming-soon invitation=model saveInvitation=saveInvitation}}`);
 
   this.$('[data-test-email-input]').val('this is not an email address').change();
 
@@ -35,7 +35,7 @@ test('Invitation button is inactive when input is not a valid email', function(a
 });
 
 test('Invitation button is enabled when email input is valid', function(assert) {
-  this.render(hbs`{{coming-soon invitation=model submitInvitation=saveInvitation}}`);
+  this.render(hbs`{{coming-soon invitation=model saveInvitation=saveInvitation}}`);
   
   this.$('[data-test-email-input]').val('test@test.com').change();
   
@@ -43,7 +43,7 @@ test('Invitation button is enabled when email input is valid', function(assert) 
 })
 
 test('Response message displayed after clicking invitation button', function(assert) {
-  this.render(hbs`{{coming-soon invitation=model submitInvitation=saveInvitation}}`);
+  this.render(hbs`{{coming-soon invitation=model saveInvitation=saveInvitation}}`);
 
   this.$('[data-test-email-input]').val('test@test.com').change();
   run(() => document.querySelector('[data-test-inv-btn]').click());
@@ -52,7 +52,7 @@ test('Response message displayed after clicking invitation button', function(ass
 });
 
 test('Input is cleared after invitation is sent', function(assert) {
-  this.render(hbs`{{coming-soon invitation=model submitInvitation=saveInvitation}}`);
+  this.render(hbs`{{coming-soon invitation=model saveInvitation=saveInvitation}}`);
 
   this.$('[data-test-email-input]').val('test@test.com').change();
   run(() => document.querySelector('[data-test-inv-btn]').click());
