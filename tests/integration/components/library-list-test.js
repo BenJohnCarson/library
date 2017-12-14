@@ -1,24 +1,23 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import startMirage from '../../helpers/start-mirage';
 
 moduleForComponent('library-list', 'Integration | Component | library list', {
-  integration: true
+  integration: true,
+  setup() {
+    startMirage(this.container);
+  },
+  afterEach() {
+    server.shutdown();
+  }
 });
 
-test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+test('it renders all libraries', function(assert) {
+  const libraryNumber = 3;
+  const model = server.createList('library', libraryNumber);
+  this.set('model', model);
 
-  this.render(hbs`{{library-list}}`);
+  this.render(hbs`{{library-list libraries=model}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#library-list}}
-      template block text
-    {{/library-list}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$('[data-test-library]').length, libraryNumber, `${libraryNumber} libraries are visible`);
 });

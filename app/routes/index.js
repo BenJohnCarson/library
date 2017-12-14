@@ -2,14 +2,15 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
   model() {
-    const invitation = this.store.createRecord('invitation', { email: '' });
-    return invitation;
+    return this.store.createRecord('invitation');
   },
 
   actions: {
-    saveInvitation() {
-      const invitation = this.modelFor(this.routeName);
-      return invitation.save();
+    saveInvitation(newInvitation) {
+      return newInvitation.save();
+    },
+    willTransition() {
+      this.controller.get('model').rollbackAttributes();
     }
   }
 });

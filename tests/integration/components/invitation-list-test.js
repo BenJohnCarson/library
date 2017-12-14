@@ -6,6 +6,9 @@ moduleForComponent('invitation-list', 'Integration | Component | invitation list
   integration: true,
   setup() {
     startMirage(this.container);
+  },
+  afterEach() {
+    server.shutdown();
   }
 });
 

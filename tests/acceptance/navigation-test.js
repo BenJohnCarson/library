@@ -56,4 +56,10 @@ test('Navigate to libraries', function(assert) {
   andThen(function() {
     assert.equal(currentURL(), '/libraries');
   });
+  
+  click('[data-test-add-btn]');
+  
+  andThen(function() {
+    assert.equal(currentURL(), '/libraries/new');
+  });
 });

@@ -13,8 +13,8 @@ export default Component.extend(Validations, {
   disabled: Ember.computed.not('validations.isValid'),
 
   actions: {
-    saveInvitation() {
-      this.get('submitInvitation')().then((res) => {
+    saveInvitation(newInvitation) {
+      this.get('submitInvitation')(newInvitation).then((res) => {
         this.set('responseMessage', `Thank you! We've just saved your email address: ${res.get('email')}`);
         this.set('invitation.email', '');
       })
