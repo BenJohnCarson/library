@@ -2,12 +2,13 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
   model() {
-    const invitations = this.store.findAll('invitation');
+    const contacts = this.store.findAll('contact');
 
     return {
-      models: invitations,
+      models: contacts,
       tableHeaders: [
-        'E-mail'
+        'E-mail',
+        'Message'
       ]
     }
   }

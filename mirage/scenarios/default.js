@@ -7,4 +7,5 @@ export default function(server) {
 
   server.createList('invitation', 10);
   server.createList('library', 10);
+  server.createList('contact', 10);
 }

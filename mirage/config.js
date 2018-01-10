@@ -29,4 +29,7 @@ export default function() {
 
   this.get('/libraries');
   this.post('/libraries');
+
+  this.get('/contacts');
+  this.post('/contacts');
 }
