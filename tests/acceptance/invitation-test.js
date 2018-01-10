@@ -19,6 +19,6 @@ test('Entering an invitation', function(assert) {
   visit('/admin/invitations');
 
   andThen(function() {
-    assert.equal(find('[data-test-email]').text(), 'test@test.com', 'Invitation appears in admin invitation list');
+    assert.equal(find('.email-value').text(), 'test@test.com', 'Invitation appears in admin invitation list');
   });
 });
