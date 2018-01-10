@@ -1,5 +1,6 @@
 <h2>List</h2>
-
-{{#each libraries as |library|}}
-  {{library-entry data-test-library=library.id library=library}}
-{{/each}}
+<div class="row">
+  {{#each libraries as |library|}}
+    {{library-entry data-test-library=library.id library=library deleteLibrary=deleteLibrary}}
+  {{/each}}
+</div>
