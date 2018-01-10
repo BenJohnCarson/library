@@ -1,0 +1,20 @@
+<h1>{{type}}</h1>
+{{#if models.isRunning}}
+  <h3>Loading...</h3>
+{{else if models.value}}
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        {{#each tableHeaders as |header|}}
+          <th>{{header}}</th>
+        {{/each}}
+      </tr>
+    </thead>
+    <tbody>
+    {{#each models.value as |model|}}
+      {{admin-entry model=model}}
+    {{/each}}
+    </tbody>
+  </table>
+{{/if}}

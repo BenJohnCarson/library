@@ -1,13 +1,28 @@
 import { moduleForComponent, test } from 'ember-qunit';
+import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
 import { run } from '@ember/runloop';
 
 moduleForComponent('contact-form', 'Integration | Component | contact form', {
-  integration: true
+  integration: true,
+  beforeEach() {
+    let newContact = { email: '', message: ''};
+    let saveContact = function () {
+      return Ember.RSVP.Promise.resolve({
+        get() {
+          return 'test@test.com';
+        }
+      });
+    }
+    this.setProperties({
+      model: newContact,
+      saveContact: saveContact
+    });
+  }
 });
 
 test('Send message button disabled when inputs are invalid', function(assert) {
-  this.render(hbs`{{contact-form}}`);
+  this.render(hbs`{{contact-form contact=model saveContact=saveContact}}`);
 
   const sendBtn = this.$('[data-test-send-btn]');
 
@@ -24,7 +39,7 @@ test('Send message button disabled when inputs are invalid', function(assert) {
 });
 
 test('Send message button enabled when inputs are valid', function(assert) {
-  this.render(hbs`{{contact-form}}`);
+  this.render(hbs`{{contact-form contact=model saveContact=saveContact}}`);
 
   this.$('[data-test-msg-input]').val('Test message blah blah').change();
   this.$('[data-test-email-input]').val('test@test.com').change();
@@ -33,7 +48,7 @@ test('Send message button enabled when inputs are valid', function(assert) {
 });
 
 test('Success message displayed after clicking send message button', function(assert) {
-  this.render(hbs`{{contact-form}}`);
+  this.render(hbs`{{contact-form contact=model saveContact=saveContact}}`);
   
   this.$('[data-test-msg-input]').val('Test message blah blah').change();
   this.$('[data-test-email-input]').val('test@test.com').change();
@@ -43,7 +58,7 @@ test('Success message displayed after clicking send message button', function(as
 });
 
 test('Inputs are cleared after click of send button', function(assert) {
-  this.render(hbs`{{contact-form}}`);
+  this.render(hbs`{{contact-form contact=model saveContact=saveContact}}`);
   
   this.$('[data-test-msg-input]').val('Test message blah blah').change();
   this.$('[data-test-email-input]').val('test@test.com').change();
