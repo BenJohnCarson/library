@@ -1,7 +1,11 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'library/tests/helpers/module-for-acceptance';
 
-moduleForAcceptance('Acceptance | navigation');
+moduleForAcceptance('Acceptance | navigation', {
+  afterEach() {
+    server.shutdown();
+  }
+});
 
 test('visiting /', function(assert) {
   visit('/');
@@ -35,4 +39,27 @@ test('Navigate to contact', function(assert) {
     assert.equal(currentURL(), '/contact');
   });
 });
+
+test('Navigate to admin/invitations', function(assert) {
+  visit('/');
+  click('[data-test-nav-invitations]');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/admin/invitations');
+  });
+});
+
+test('Navigate to libraries', function(assert) {
+  visit('/');
+  click('[data-test-nav-libraries]');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/libraries');
+  });
   
+  click('[data-test-add-btn]');
+  
+  andThen(function() {
+    assert.equal(currentURL(), '/libraries/new');
+  });
+});
