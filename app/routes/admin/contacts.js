@@ -1,15 +1,18 @@
 import Route from '@ember/routing/route';
+import { task } from 'ember-concurrency';
 
 export default Route.extend({
   model() {
-    const contacts = this.store.findAll('contact');
-
     return {
-      models: contacts,
+      models: this.get('contactsTask').perform(),
       tableHeaders: [
         'E-mail',
         'Message'
       ]
     }
-  }
+  },
+
+  contactsTask: task(function * () {
+    return yield this.store.findAll('contact');
+  })
 });

@@ -1,14 +1,17 @@
 import Route from '@ember/routing/route';
+import { task } from 'ember-concurrency';
 
 export default Route.extend({
   model() {
-    const invitations = this.store.findAll('invitation');
-
     return {
-      models: invitations,
+      models: this.get('invitationsTask').perform(),
       tableHeaders: [
         'E-mail'
       ]
     }
-  }
+  },
+
+  invitationsTask: task(function * () {
+    return yield this.store.findAll('invitation');
+  })
 });
