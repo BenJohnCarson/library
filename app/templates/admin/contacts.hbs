@@ -1,1 +1,3 @@
-{{admin-list models=model.models type='Contact' tableHeaders=model.tableHeaders}}
+<div class="admin">
+  {{admin-list models=model.models type='Contact' tableHeaders=model.tableHeaders deleteRecord=(route-action 'deleteContact')}}
+</div>

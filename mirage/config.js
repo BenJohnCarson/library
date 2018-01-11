@@ -26,10 +26,15 @@ export default function() {
 
   this.get('/invitations');
   this.post('/invitations');
+  this.del('/invitations/:id')
 
   this.get('/libraries');
+  this.get('/libraries/:id');
   this.post('/libraries');
+  this.patch('/libraries/:id');
+  this.del('/libraries/:id');
 
   this.get('/contacts');
   this.post('/contacts');
+  this.del('/contacts/:id')
 }

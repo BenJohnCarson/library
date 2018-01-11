@@ -1,5 +1,3 @@
-<h2>Add a new local Library</h2>
-
 <div class="form-horizontal">
   <div class="form-group">
     <label class="col-sm-2 control-label">Name</label>
@@ -21,7 +19,9 @@
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default" disabled={{disabled}} {{action 'submitForm' library}} data-test-submit>Add to library list</button>
+      <button type="submit" class="btn btn-default" disabled={{disabled}} {{action 'submitForm' library}} data-test-submit>
+        {{buttonLabel}}
+      </button>
     </div>
   </div>
 </div>
