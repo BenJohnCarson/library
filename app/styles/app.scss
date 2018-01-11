@@ -1,9 +1,16 @@
-@import "bootstrap";
+@import 'bootstrap';
 
 body {
-  padding-top: 20px;
+    padding-top: 20px;
 }
 
 .mt-3 {
-  margin-top: 15px;
+    margin-top: 15px;
 }
+
+html {
+    overflow-y: scroll;
+}
+
+@import 'libraries';
+@import 'admin';

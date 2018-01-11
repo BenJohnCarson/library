@@ -2,3 +2,8 @@
 {{#each-in model.data as |property value|}}
   <td class="{{property}}-value">{{value}}</td>
 {{/each-in}}
+<td class="table__delete-cell">
+  <button class="btn btn-danger btn-xs" {{action 'deleteRecord' model}} disabled={{deleteTask.isRunning}}>
+    Delete
+  </button>
+</td>

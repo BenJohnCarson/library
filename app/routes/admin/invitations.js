@@ -13,5 +13,11 @@ export default Route.extend({
 
   invitationsTask: task(function * () {
     return yield this.store.findAll('invitation');
-  })
+  }),
+
+  actions: {
+    deleteInvitation(invitation) {
+      return invitation.destroyRecord();
+    }
+  }
 });

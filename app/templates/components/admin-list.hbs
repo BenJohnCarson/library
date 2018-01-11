@@ -9,11 +9,12 @@
         {{#each tableHeaders as |header|}}
           <th>{{header}}</th>
         {{/each}}
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
     {{#each models.value as |model|}}
-      {{admin-entry model=model}}
+      {{admin-entry model=model deleteRecord=deleteRecord}}
     {{/each}}
     </tbody>
   </table>

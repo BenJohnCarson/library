@@ -1,9 +1,17 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title" data-test-name>{{library.name}}</h3>
-  </div>
-  <div class="panel-body">
-    <p data-test-address>Address: {{library.address}}</p>
-    <p data-test-phone>Phone: {{library.phone}}</p>
+<div class="col-md-4">
+  <div class="panel panel-default library-item">
+    <div class="panel-heading">
+      <h3 class="panel-title" data-test-name>{{library.name}}</h3>
+    </div>
+    <div class="panel-body">
+      <p data-test-address>Address: {{library.address}}</p>
+      <p data-test-phone>Phone: {{library.phone}}</p>
+    </div>
+    <div class="panel-footer text-right">
+      {{#link-to 'libraries.edit' library.id class='btn btn-success btn-xs'}}Edit{{/link-to}}
+      <button class="btn btn-danger btn-xs" {{action 'deleteLibrary' library}} disabled={{deleteTask.isRunning}}>
+        Delete
+      </button>
+    </div>
   </div>
 </div>

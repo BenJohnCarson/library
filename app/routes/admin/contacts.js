@@ -14,5 +14,11 @@ export default Route.extend({
 
   contactsTask: task(function * () {
     return yield this.store.findAll('contact');
-  })
+  }),
+
+  actions: {
+    deleteContact(contact) {
+      return contact.destroyRecord();
+    }
+  }
 });
