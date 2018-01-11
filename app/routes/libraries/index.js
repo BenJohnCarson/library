@@ -12,7 +12,7 @@ export default Ember.Route.extend({
       let confirmation = confirm('Are you sure?');
 
       if (confirmation) {
-        library.destroyRecord();
+        return library.destroyRecord();
       }
     }
   }
