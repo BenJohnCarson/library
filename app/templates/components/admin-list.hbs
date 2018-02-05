@@ -1,7 +1,7 @@
 <h1>{{type}}</h1>
-{{#if models.isRunning}}
+{{#if model.isRunning}}
   <h3>Loading...</h3>
-{{else if models.value}}
+{{else if model.value}}
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -13,8 +13,8 @@
       </tr>
     </thead>
     <tbody>
-    {{#each models.value as |model|}}
-      {{admin-entry model=model deleteRecord=deleteRecord}}
+    {{#each model.value as |entry|}}
+      {{admin-entry model=entry deleteRecord=deleteRecord}}
     {{/each}}
     </tbody>
   </table>

@@ -4,21 +4,11 @@ import { task } from 'ember-concurrency';
 export default Route.extend({
   model() {
     return {
-      models: this.get('contactsTask').perform(),
-      tableHeaders: [
-        'E-mail',
-        'Message'
-      ]
+      model: this.get('contactsTask').perform()
     }
   },
 
   contactsTask: task(function * () {
     return yield this.store.findAll('contact');
-  }),
-
-  actions: {
-    deleteContact(contact) {
-      return contact.destroyRecord();
-    }
-  }
+  })
 });
