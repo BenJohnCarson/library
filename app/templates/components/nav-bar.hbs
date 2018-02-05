@@ -12,10 +12,10 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav">
-          {{#link-to data-test-nav-home 'index' tagName="li"}}<a href="">Home</a>{{/link-to}}
-          {{#link-to data-test-nav-libraries 'libraries' tagName="li"}}<a href="">Libraries</a>{{/link-to}}
-          {{#link-to data-test-nav-about 'about' tagName="li"}}<a href="">About</a>{{/link-to}}
-          {{#link-to data-test-nav-contact 'contact' tagName="li"}}<a href="">Contact</a>{{/link-to}}
+          {{#nav-link-to data-test-nav-home 'index'}}Home{{/nav-link-to}}
+          {{#nav-link-to data-test-nav-libraries 'libraries'}}Libraries{{/nav-link-to}}
+          {{#nav-link-to data-test-nav-about 'about'}}About{{/nav-link-to}}
+          {{#nav-link-to data-test-nav-contact 'contact'}}Contact{{/nav-link-to}}
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
@@ -23,8 +23,8 @@
             Admin<span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-          {{#link-to data-test-nav-invitations 'admin.invitations' tagName="li"}}<a href="">Invitations</a>{{/link-to}}
-          {{#link-to data-test-nav-contacts 'admin.contacts' tagName="li"}}<a href="">Contacts</a>{{/link-to}}
+          {{#nav-link-to data-test-nav-invitations 'admin.invitations'}}Invitations{{/nav-link-to}}
+          {{#nav-link-to data-test-nav-contacts 'admin.contacts'}}Contacts{{/nav-link-to}}
           </ul>
         </li>
       </ul>
