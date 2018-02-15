@@ -11,16 +11,19 @@
     "baseUrl": ".",
     "module": "es6",
     "paths": {
-      "library/tests/*": ["tests/*"],
+      "library/tests/*": [
+        "tests/*"
+      ],
       "library/*": [
         "app/*"
+      ],
+      "*": [
+        "types/*"
       ]
     }
   },
-  "exclude": [
-    "tmp",
-    "dist",
-    "node_modules",
-    "bower_components"
+  "include": [
+    "app",
+    "tests"
   ]
 }
